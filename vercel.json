@@ -1,0 +1,8 @@
+{
+  "cleanUrls": true,
+  "functions": {
+    "api/arrivals.js": {
+      "runtime": "@vercel/node@5.3.24"
+    }
+  }
+}

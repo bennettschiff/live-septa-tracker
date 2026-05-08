@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#111517" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Berks Board" />
+    <title>Berks Train Board</title>
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css?v=7" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <main class="board-shell">
+      <section class="board">
+        <header class="board-header">
+          <div>
+            <p class="eyebrow">SEPTA METRO</p>
+            <h1>Berks Station Board</h1>
+          </div>
+          <div class="header-meta">
+            <p>Market-Frankford Line</p>
+            <p id="clock">--:--:--</p>
+          </div>
+        </header>
+
+        <section class="marquee">
+          <span id="status-line">Loading live departures for Berks...</span>
+        </section>
+
+        <section class="install-strip">
+          <p>iPhone tip: open in Safari, tap Share, then Add to Home Screen.</p>
+        </section>
+
+        <nav class="mobile-switcher" aria-label="Direction selector">
+          <button class="switch-button is-active" type="button" data-direction-toggle="westbound">
+            Westbound
+          </button>
+          <button class="switch-button" type="button" data-direction-toggle="eastbound">
+            Eastbound
+          </button>
+        </nav>
+
+        <section class="platform-grid">
+          <article class="platform-card" data-direction-card="westbound">
+            <div class="platform-header">
+              <p>Westbound</p>
+              <p>To 69th St TC</p>
+            </div>
+            <div class="column-head">
+              <span>Line</span>
+              <span>Destination</span>
+              <span>Leaves</span>
+              <span>Status</span>
+            </div>
+            <div id="westbound-list" class="departures"></div>
+            <section class="connector-board" aria-label="Broad Street Line southbound departures">
+              <div class="connector-header">
+                <p>Broad Street Line</p>
+                <p>Southbound from 15th/City Hall</p>
+              </div>
+              <div class="column-head connector-column-head">
+                <span>Line</span>
+                <span>Destination</span>
+                <span>Leaves</span>
+                <span>Away</span>
+              </div>
+              <div id="broad-street-list" class="departures connector-departures"></div>
+            </section>
+          </article>
+
+          <article class="platform-card" data-direction-card="eastbound">
+            <div class="platform-header">
+              <p>Eastbound</p>
+              <p>To Frankford TC</p>
+            </div>
+            <div class="column-head">
+              <span>Line</span>
+              <span>Destination</span>
+              <span>Leaves</span>
+              <span>Status</span>
+            </div>
+            <div id="eastbound-list" class="departures"></div>
+          </article>
+        </section>
+
+        <footer class="board-footer">
+          <p id="refresh-note">Awaiting first refresh...</p>
+          <p id="alert-note">No active service alerts.</p>
+        </footer>
+      </section>
+    </main>
+
+    <template id="departure-row-template">
+      <article class="departure-row">
+        <span data-field="route" data-label="Line"></span>
+        <span data-field="destination" data-label="Destination"></span>
+        <span data-field="time" data-label="Leaves"></span>
+        <span data-field="status" data-label="Status" class="status-pill"></span>
+      </article>
+    </template>
+
+    <script type="module" src="/app.js?v=7"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "Berks Station Board",
+  "short_name": "Berks Board",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#101315",
+  "theme_color": "#111517",
+  "description": "Live Berks stop board for the SEPTA Market-Frankford Line.",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

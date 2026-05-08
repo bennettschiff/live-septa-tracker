@@ -1,0 +1,10 @@
+.vercel
+gtfs_public.zip
+trip_print.html
+data_extract/
+data/trips.txt
+data/stop_times.txt
+data/calendar.txt
+data/calendar_dates.txt
+data/routes.txt
+data/directions.txt
