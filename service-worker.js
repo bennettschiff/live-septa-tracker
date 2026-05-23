@@ -1,4 +1,4 @@
-const CACHE_NAME = "berks-board-v7";
+const CACHE_NAME = "berks-board-v8";
 const ASSETS = ["/", "/styles.css", "/app.js", "/site.webmanifest", "/icon.svg"];
 
 self.addEventListener("install", (event) => {

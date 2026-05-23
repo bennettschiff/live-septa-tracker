@@ -125,9 +125,8 @@ function renderBoard(container, direction, options = {}) {
     return;
   }
 
-  const visibleDepartures = window.innerWidth <= 700
-    ? direction.departures.slice(0, 4)
-    : direction.departures.slice(0, 4);
+  const visibleLimit = options.limit || 4;
+  const visibleDepartures = direction.departures.slice(0, visibleLimit);
 
   visibleDepartures.forEach((departure) => {
     const row = template.content.firstElementChild.cloneNode(true);
@@ -142,8 +141,12 @@ function renderBoard(container, direction, options = {}) {
       <strong>${departure.route}</strong>
       <small>${direction.direction}</small>
     `;
+    const destinationText = options.destinationField === "stop"
+      ? departure.stopName || direction.destination
+      : direction.destination;
+
     destinationField.innerHTML = `
-      <strong>${direction.destination}</strong>
+      <strong>${destinationText}</strong>
       <small>${options.destinationNote || (departure.scheduledDisplay ? `Sched ${departure.scheduledDisplay}` : "Schedule pending")}</small>
     `;
     timeField.innerHTML = options.expandable ? `
@@ -180,7 +183,11 @@ function renderBoard(container, direction, options = {}) {
 }
 
 function renderAllBoards(data) {
-  renderBoard(eastboundList, data.eastbound, { expandable: true });
+  renderBoard(eastboundList, data.eastbound, {
+    destinationField: "stop",
+    destinationNote: "Eastbound",
+    limit: 9
+  });
   renderBoard(westboundList, data.westbound, { expandable: true });
   renderBoard(broadStreetList, data.broadStreetSouthbound, {
     destinationNote: "Southbound",
